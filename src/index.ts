@@ -21,10 +21,10 @@ eventEmitter.on("alert", (data: Alert) => {
       (data.project !== null ? ` *${data.project}*` : "") +
       (data.environment !== null ? ` at *${data.environment}*` : "") +
       ":",
-    "*" + data.title.replaceAll(/[_*[\]()~`>#+-=|{}\.!]/g, "\\$&") + "*",
+    "*" + data.title.replaceAll(/[_*[\]`]/g, "\\$&") + "*",
     "",
     "`" + data.text.replaceAll(/[\`\/]/g, "\\$&") + "`",
-    data.title_link.replaceAll(/[_*[\]()~`>#+-=|{}\.!]/g, "\\$&"),
+    data.title_link.replaceAll(/[_*[\]`]/g, "\\$&"),
   ]
 
   if (data.project !== null) {
@@ -40,7 +40,7 @@ eventEmitter.on("alert", (data: Alert) => {
   }
 
   bot.telegram.sendMessage(botChatId, messageParts.join("\n"), {
-    parse_mode: "MarkdownV2",
+    parse_mode: "Markdown",
     disable_web_page_preview: true,
   })
 })
