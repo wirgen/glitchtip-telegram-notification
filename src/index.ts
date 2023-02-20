@@ -32,9 +32,9 @@ eventEmitter.on("alert", (data: Alert) => {
 
     messageParts.push("")
     messageParts.push(
-      ` \\#${projectHash}` +
+      ` #${projectHash}` +
         (data.environment !== null
-          ? ` \\#${data.environment} \\#${projectHash}\\_${data.environment}`
+          ? ` #${data.environment} #${projectHash}\\_${data.environment}`
           : "")
     )
   }
