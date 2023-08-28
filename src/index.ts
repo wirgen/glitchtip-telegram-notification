@@ -17,13 +17,13 @@ eventEmitter.on("alert", (data: Alert) => {
   }
 
   const messageParts = [
-    "*\\[GlitchTip\\]* Error in project" +
+    "*[GlitchTip]* Error in project" +
       (data.project !== null ? ` *${data.project}*` : "") +
       (data.environment !== null ? ` at *${data.environment}*` : "") +
       ":",
     "*" + data.title.replaceAll(/[_*[\]`]/g, "\\$&") + "*",
     "",
-    "`" + data.text.replaceAll(/[\`\/]/g, "\\$&") + "`",
+    "`" + data.text.replaceAll(/[\`]/g, "\\$&") + "`",
     data.title_link.replaceAll(/[_*[\]`]/g, "\\$&"),
   ]
 
